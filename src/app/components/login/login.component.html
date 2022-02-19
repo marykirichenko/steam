@@ -1,0 +1,27 @@
+<div class="form-content">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <h2>Login</h2>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email"/>
+      <mat-error *ngIf="email?.errors?.['required']">
+        Enter email
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">
+        Wrong format of email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password"/>
+      <mat-error *ngIf="password?.errors?.['required']">
+        Enter password
+      </mat-error>
+      <mat-error *ngIf="password?.errors?.['minlength']">
+        Password invalid
+      </mat-error>
+    </mat-form-field>
+    <Br>
+    <button mat-raised-button color="primary" type="submit">Login
+    </button>
+  </form>
+</div>
+

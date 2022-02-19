@@ -1,15 +1,24 @@
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {appRoutingModule} from "./app-routing.module";
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { GamesComponent } from './games/games.component';
-import { LibraryComponent } from './library/library.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { FriendsComponent } from './friends/friends.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { GamesComponent } from './components/games/games.component';
+import { LibraryComponent } from './components/library/library.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -18,12 +27,21 @@ import { FriendsComponent } from './friends/friends.component';
     GamesComponent,
     LibraryComponent,
     ProfileComponent,
-    SignInComponent,
+    LoginComponent,
     FriendsComponent
   ],
   imports: [
     BrowserModule,
-    appRoutingModule
+    appRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

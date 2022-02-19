@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <img src="../../../assets/freesteamicon.png" alt="freeLogo" class="navBar-img">
+  <a routerLink="games" class="navBar-a">Games</a>
+  <a routerLink="library" class="navBar-a">Library</a>
+  <a routerLink="friends" class="navBar-a">Friends</a>
+  <a routerLink="profile" class="navBar-a">Profile</a>
+  <ng-container *ngIf = "authService.isLogged | async as user;else login ">
+    <button (click)="logout()" mat-button>
+      <mat-icon> logout</mat-icon>
+      Logout
+    </button>
+  </ng-container>
+  <ng-template #login>
+    <button routerLink="" mat-button>
+      <mat-icon> login</mat-icon>
+      Login
+    </button>
+  </ng-template>
+
+</mat-toolbar>

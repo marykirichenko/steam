@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import { GamesComponent } from './games/games.component';
-import { LibraryComponent } from './library/library.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { FriendsComponent } from './friends/friends.component';
+import { GamesComponent } from './components/games/games.component';
+import { LibraryComponent } from './components/library/library.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import {canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from "@angular/fire/auth-guard";
+
+const redirectUnlogined = () => redirectUnauthorizedTo([''])
+const redirectLogined = () => redirectLoggedInTo(['/library'])
 
 const appRoutes: Routes = [
-  {path: '', component: SignInComponent},
+  {path: '', component: LoginComponent,...canActivate(redirectLogined)},
   {path: 'games', component: GamesComponent},
-  {path: 'library', component: LibraryComponent},
-  {path: 'library', component: LibraryComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'friends', component: FriendsComponent},
+  {path: 'library', component: LibraryComponent, ...canActivate(redirectUnlogined)},
+  {path: 'profile', component: ProfileComponent, ...canActivate(redirectUnlogined)},
+  {path: 'friends', component: FriendsComponent, ...canActivate(redirectUnlogined)},
 ];
 
 @NgModule({
