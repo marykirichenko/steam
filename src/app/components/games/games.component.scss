@@ -1,0 +1,52 @@
+.main-card-wrapper{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+.card-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+mat-card{
+  margin: 20px;
+}
+
+.card-title {
+  background-color: #6C69FF;
+  padding:10px;
+  width: 95%;
+  color: white;
+  font-size: large;
+}
+.card-price{
+  background-color:#6C69FF;
+  width:95%;
+  padding:10px;
+  color:white;
+  font-size: large;
+ text-align: end;
+}
+
+.mat-card-content{
+  margin:10px;
+}
+
+.mat-card-actions{
+  text-align: center;
+  margin: 10px;
+}
+
+.horizontal-line{
+  border-left: 1.5px solid ;
+  width:20px;
+  height: 95%;
+  margin-top:3%
+}
+
+h1{
+  margin-left: 20px;
+}
+
+.side-part{
+  display: grid;
+  grid-template-columns: 1fr 13fr;
+}

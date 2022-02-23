@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatSliderModule} from '@angular/material/slider';
 import {appRoutingModule} from "./app-routing.module";
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,6 +19,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { HttpClientModule }   from '@angular/common/http';
+import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     LibraryComponent,
     ProfileComponent,
     LoginComponent,
-    FriendsComponent
+    FriendsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatSliderModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())
   ],

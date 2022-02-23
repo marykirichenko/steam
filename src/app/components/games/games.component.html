@@ -1,1 +1,28 @@
-<p>games works!</p>
+<h1>Featured Games</h1>
+<div class='main-card-wrapper'>
+  <div class="card-wrapper">
+    <mat-card *ngFor="let game of gameOnPage" >
+      <div class="card-title"> {{game.title}}</div>
+      <div class="card-price">{{game.price}}  </div>
+      <mat-card-content>
+        <p>{{game.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit"> Add to Library</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="side-part">
+    <div class="horizontal-line"></div>
+    <div class="filter-block">
+
+    </div>
+  </div>
+</div>
+<mat-paginator [length]=this.gameCardArray.length
+               [pageSize]='6'
+               [pageSizeOptions] ='[3,6,9]'
+               (page)="onPageChange($event)"
+               showFirstLastButtons>
+></mat-paginator>
+
